@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Books Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bible Books Sorting Game</h1>
+        <p>Drag and drop the books of the Bible into the correct order and press submit.</p>
+        <div class="grid-container">
+            {% for book in books %}
+            <div class="tile" draggable="true">{{ book }}</div>
+            {% endfor %}
+        </div>
+        <button id="check-order-btn">Submit</button>
+        <button id="play-again-btn" style="display: none;">Play Again</button>
+        <button id="show-correct-order-btn">Show Correct Order</button>
+        <div id="message"></div>
+    </div>
+    <script>
+        const correctOrder = {{ correct_order|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+
